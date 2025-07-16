@@ -62,3 +62,32 @@ echo "She broke down when she heard the news." | adk run my-first-agent
 - study: 勉強する、研究する。ここでは「英語を勉強する」という意味で使用されています。
 - for: （期間）の間。ここでは「3年間」という期間を示しています。
 ```
+
+### simple function calling
+
+function calling の例
+
+`./simple-function-calling`
+
+ここに四則計算を置いときました
+
+### MCP Tools ( playwright )
+
+localhost:8931 で待ち構える playwright MCP サーバに対して指示が出せるエージェント
+
+`./playwright-mcp`
+
+#### how to use
+
+1. **MCPサーバーの起動**:
+```bash
+cd ./playwright-mcp/server
+npm install
+npm run start  # localhost:8931でサーバー起動
+```
+
+2. **エージェントの実行**:
+```bash
+cd /path/to/agents  # agentsディレクトリに移動
+adk run playwright-mcp
+```

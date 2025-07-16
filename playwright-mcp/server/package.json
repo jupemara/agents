@@ -1,0 +1,13 @@
+{
+  "name": "playwright-mcp",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "npx @playwright/mcp@latest --port 8931"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@playwright/mcp": "^0.0.29"
+  }
+}
