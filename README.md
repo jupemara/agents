@@ -38,31 +38,6 @@ adk run my-first-agent
 echo "She broke down when she heard the news." | adk run my-first-agent
 ```
 
-#### 出力例
-
-```
-**原文**: I have been studying English for three years.
-**日本語訳**: 私は3年間英語を勉強しています。
-
-**文法解説**:
-- 文型: SV (第1文型)
-- 時制: 現在完了進行形 (have been + 動詞の現在分詞)
-    - 過去のある時点から現在まで継続している動作や状態を表します。
-    - 「have/has + been + 動詞のing形」で構成されます。
-- 品詞:
-    - I (代名詞): 主語
-    - have been studying (動詞句): 動詞
-    - English (名詞): 目的語
-    - for (前置詞): 前置詞
-    - three years (名詞句): 期間を表す副詞句
-- 構文:
-    - 「for + 期間」で「～の間」という意味を表し、継続している期間を示します。
-
-**語彙ノート**:
-- study: 勉強する、研究する。ここでは「英語を勉強する」という意味で使用されています。
-- for: （期間）の間。ここでは「3年間」という期間を示しています。
-```
-
 ### simple function calling
 
 function calling の例
@@ -91,3 +66,5 @@ npm run start  # localhost:8931でサーバー起動
 cd /path/to/agents  # agentsディレクトリに移動
 adk run playwright-mcp
 ```
+
+### MCP ToolBox
