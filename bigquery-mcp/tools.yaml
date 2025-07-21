@@ -2,7 +2,7 @@ sources:
   my-bigquery:
     kind: "bigquery"
     # please replace with your project id
-    project: ${GOOGLE_CLOUD_PROJECT}
+    project: ${PLEASE_REPLACE_WITH_YOUR_PROJECT_ID}
   public-data-bigquery:
     kind: "bigquery"
     project: "bigquery-public-data"

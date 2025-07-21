@@ -5,14 +5,14 @@ metadata:
   annotations:
     run.googleapis.com/ingress: all
     run.googleapis.com/invoker-iam-disabled: "true"
-    run.googleapis.com/container-dependencies: '{"agent":["toolbox"]}'
-    autoscaling.knative.dev/maxScale: "100"
-    autoscaling.knative.dev/minScale: "1"
 spec:
   template:
     metadata:
       annotations:
         run.googleapis.com/execution-environment: gen2
+        run.googleapis.com/container-dependencies: '{"agent":["toolbox"]}'
+        autoscaling.knative.dev/maxScale: "100"
+        autoscaling.knative.dev/minScale: "1"
     spec:
       containerConcurrency: 1000
       timeoutSeconds: 3600
