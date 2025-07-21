@@ -1,8 +1,9 @@
+import os
 from google.adk.agents import LlmAgent
 from toolbox_core import ToolboxSyncClient
 
 # MCP Toolboxからツールを読み込み
-toolbox_client = ToolboxSyncClient("http://127.0.0.1:5000")
+toolbox_client = ToolboxSyncClient(os.getenv("TOOLBOX_URL", "http://127.0.0.1:5000"))
 agent_toolset = toolbox_client.load_toolset("google-cloud-release-tools")
 
 root_agent = LlmAgent(
