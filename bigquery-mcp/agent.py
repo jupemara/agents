@@ -7,7 +7,7 @@ toolbox_client = ToolboxSyncClient(os.getenv("TOOLBOX_URL", "http://127.0.0.1:50
 agent_toolset = toolbox_client.load_toolset("google-cloud-release-tools")
 
 root_agent = LlmAgent(
-    model="gemini-2.0-flash-exp",
+    model="gemini-2.0-flash",
     name="bigquery_release_notes_agent",
     description="Google Cloudリリースノート検索エージェント",
     instruction="""あなたはGoogle Cloudのリリースノート検索専門エージェントです。
