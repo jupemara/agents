@@ -1,6 +1,6 @@
 # BigQuery MCP Agent
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=bigquery-mcp&cloudshell_git_branch=teachme.md&cloudshell_open_in_editor=hands-on.md)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=bigquery-mcp&cloudshell_git_branch=main&cloudshell_open_in_editor=hands-on.md)
 
 Google Cloud リリースノート検索のADKエージェント実装
 
