@@ -14,6 +14,8 @@ Google Cloud リリースノート検索のADKエージェント実装
 
 ## インストール・セットアップ
 
+- `python 3.9`
+
 ### 1. 依存関係のインストール
 
 ```bash
@@ -24,7 +26,6 @@ $ pip install -r requirements.txt
 
 ```bash
 $ gcloud services enable bigquery.googleapis.com
-$ gcloud services enable iam.googleapis.com
 ```
 
 ### 3. MCP Toolbox セットアップ
