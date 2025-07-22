@@ -1,0 +1,50 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: bigquery-mcp-agent
+  annotations:
+    run.googleapis.com/ingress: all
+    run.googleapis.com/invoker-iam-disabled: "true"
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/execution-environment: gen2
+        run.googleapis.com/container-dependencies: '{"agent":["toolbox"]}'
+        autoscaling.knative.dev/maxScale: "100"
+        autoscaling.knative.dev/minScale: "1"
+    spec:
+      containerConcurrency: 1000
+      timeoutSeconds: 3600
+      containers:
+      - name: agent
+        image: gcr.io/${PLEASE_REPLACE_WITH_YOUR_PROJECT_ID}/bigquery-mcp-agent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: GOOGLE_GENAI_USE_VERTEXAI
+          value: "TRUE"
+        - name: GOOGLE_CLOUD_PROJECT
+          value: "${PLEASE_REPLACE_WITH_YOUR_PROJECT_ID}"
+        - name: GOOGLE_CLOUD_LOCATION
+          value: "us-central1"
+        - name: TOOLBOX_URL
+          value: "http://localhost:5000"
+        resources:
+          limits:
+            cpu: "2"
+            memory: "2Gi"
+      - name: toolbox
+        image: gcr.io/${PLEASE_REPLACE_WITH_YOUR_PROJECT_ID}/bigquery-mcp-toolbox
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+        startupProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 3
