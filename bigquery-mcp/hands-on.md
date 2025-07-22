@@ -79,6 +79,10 @@ $ adk run .
 
 ## 6. Cloud Run にデプロイ
 
-- `deploy.sh` の中身を見て確認
-- `cloudbuild.yaml` の中身を見て確認
-- `cloud-run.yaml` の中身を見て確認
+- `cloud-run/deploy.sh` の中身を見て適宜変数を変更確認
+- `cloudbuild.yaml` の中身を見て適宜変数を変更
+- `cloud-run/cloud-run.yaml` の中身を見て適宜変数を変更
+
+## 7. Vertex AI Agent + Agentspace にデプロイ
+
+- `vertex-ai/deploy.sh` の中身を見て適宜変数を変更

@@ -71,5 +71,5 @@ $ adk web
 ## deploy to Cloud Run
 
 ```zsh
-$ ./deploy.sh
+$ ./cloud-run/deploy.sh
 ```
