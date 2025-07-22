@@ -4,7 +4,7 @@ from toolbox_core import ToolboxSyncClient
 
 # MCP Toolboxからツールを読み込み
 toolbox_client = ToolboxSyncClient(os.getenv("TOOLBOX_URL", "http://127.0.0.1:5000"))
-agent_toolset = toolbox_client.load_toolset("google-cloud-release-tools")
+agent_toolset = toolbox_client.load_toolset()
 
 root_agent = LlmAgent(
     model="gemini-2.0-flash",
