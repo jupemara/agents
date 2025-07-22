@@ -2,8 +2,7 @@ import os
 from google.adk.agents import LlmAgent
 from toolbox_core import ToolboxSyncClient
 
-# toolbox_url = os.getenv("TOOLBOX_URL", "http://127.0.0.1:5000")
-toolbox_url = os.getenv("TOOLBOX_URL", "https://bigquery-mcp-toolbox-646929724777.asia-northeast1.run.app")
+toolbox_url = os.getenv("TOOLBOX_URL", "http://127.0.0.1:5000")
 toolbox_client = ToolboxSyncClient(toolbox_url)
 toolset = toolbox_client.load_toolset()
 
