@@ -1,5 +1,7 @@
 # BigQuery MCP Agent
 
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=bigquery-mcp/tutorial.md)
+
 Google Cloud リリースノート検索のADKエージェント実装
 
 - [MCP Toolbox](https://github.com/googleapis/genai-toolbox)を経由
