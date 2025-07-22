@@ -1,10 +1,30 @@
 import os
+import google.auth
+import google.auth.transport.requests
 from google.adk.agents import LlmAgent
+from google.oauth2 import id_token
 from toolbox_core import ToolboxSyncClient
 
-# MCP Toolboxからツールを読み込み
-toolbox_client = ToolboxSyncClient(os.getenv("TOOLBOX_URL", "http://127.0.0.1:5000"))
-agent_toolset = toolbox_client.load_toolset()
+def get_cloud_run_token(service_url):
+    return id_token.fetch_id_token(
+        google.auth.transport.requests.Request(),
+        service_url.rstrip('/')
+    )
+
+def create_authenticated_toolbox_client(toolbox_url):
+    if toolbox_url.startswith("http://127.0.0.1") or toolbox_url.startswith("http://localhost"):
+        return ToolboxSyncClient(toolbox_url)
+
+    token = get_cloud_run_token(toolbox_url)
+    if token:
+        return ToolboxSyncClient(toolbox_url, client_headers={"Authorization": f"Bearer {token}"})
+    else:
+        print("Failed to get Cloud Run token, using unauthenticated client")
+        return ToolboxSyncClient(toolbox_url)
+
+toolbox_url = os.getenv("TOOLBOX_URL", "http://127.0.0.1:5000")
+toolbox_client = create_authenticated_toolbox_client(toolbox_url)
+toolset = toolbox_client.load_toolset()
 
 root_agent = LlmAgent(
     model="gemini-2.0-flash",
@@ -40,5 +60,5 @@ MCP Toolbox経由でBigQueryツールが利用可能です：
 - 可能であれば、リリース日付、製品名、主な変更点を含める
 
 ユーザーの質問に対して、適切なSQLクエリを生成し、結果を分析して有用な情報を提供してください。""",
-    tools=agent_toolset
+    tools=toolset
 )
