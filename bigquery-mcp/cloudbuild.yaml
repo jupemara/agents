@@ -1,9 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', 'docker/agent/Dockerfile', '-t', 'gcr.io/virtual-gcp/bigquery-mcp-agent', '.']
+  args: ['build', '-f', 'docker/agent/Dockerfile', '-t', 'gcr.io/$PLEASE_SPECIFY_YOUR_PROJECT_ID/bigquery-mcp-agent', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/virtual-gcp/bigquery-mcp-agent']
+  args: ['push', 'gcr.io/$PLEASE_SPECIFY_YOUR_PROJECT_ID/bigquery-mcp-agent']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', 'docker/mcp-toolbox/Dockerfile', '-t', 'gcr.io/virtual-gcp/bigquery-mcp-toolbox', '.']
+  args: ['build', '-f', 'docker/mcp-toolbox/Dockerfile', '-t', 'gcr.io/$PLEASE_SPECIFY_YOUR_PROJECT_ID/bigquery-mcp-toolbox', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/virtual-gcp/bigquery-mcp-toolbox']
+  args: ['push', 'gcr.io/$PLEASE_SPECIFY_YOUR_PROJECT_ID/bigquery-mcp-toolbox']

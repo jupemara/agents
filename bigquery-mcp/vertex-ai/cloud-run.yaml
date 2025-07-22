@@ -17,12 +17,9 @@ spec:
       timeoutSeconds: 300
       containers:
       - name: toolbox
-        image: gcr.io/virtual-gcp/bigquery-mcp-toolbox
+        image: gcr.io/$PLEASE_SPECIFY_YOUR_PROJECT_ID/bigquery-mcp-toolbox
         ports:
         - containerPort: 5000
-        env:
-        - name: GOOGLE_CLOUD_PROJECT
-          value: "virtual-gcp"
         resources:
           limits:
             cpu: "1"
