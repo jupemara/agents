@@ -1,0 +1,29 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: bigquery-mcp-toolbox
+  annotations:
+    run.googleapis.com/ingress: all
+    run.googleapis.com/invoker-iam-disabled: "true"
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/execution-environment: gen2
+        autoscaling.knative.dev/maxScale: "100"
+        autoscaling.knative.dev/minScale: "0"
+    spec:
+      containerConcurrency: 1000
+      timeoutSeconds: 300
+      containers:
+      - name: toolbox
+        image: gcr.io/virtual-gcp/bigquery-mcp-toolbox
+        ports:
+        - containerPort: 5000
+        env:
+        - name: GOOGLE_CLOUD_PROJECT
+          value: "virtual-gcp"
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1Gi"
