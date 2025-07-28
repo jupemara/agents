@@ -95,6 +95,18 @@ gcloud services enable artifactregistry.googleapis.com
 
 ## Step 2. ローカル環境で Agent を動かしてみる
 
+### Python のセットアップ
+
+お行儀よく venv します
+
+```bash
+python -m venv .venv
+```
+
+```bash
+source .venv/bin/activate
+```
+
 ### Python 依存関係のインストール
 
 必要な Python 依存関係をインストールします
@@ -103,13 +115,12 @@ gcloud services enable artifactregistry.googleapis.com
 pip install -r requirements.txt
 ```
 
+## Step 2. ローカル環境で Agent を動かしてみる
+
 ### MCP Toolbox のダウンロード
 
 ```bash
 curl -O https://storage.googleapis.com/genai-toolbox/v0.9.0/linux/amd64/toolbox
-```
-
-```bash
 chmod +x toolbox
 ```
 
