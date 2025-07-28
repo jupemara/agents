@@ -24,7 +24,7 @@ MCP Toolbox を用いて, ADK と BigQuery を接続した AI Agents を作成�
 gcloud auth list
 ```
 
-次に認証済みアカウントが正しくコンフィグに設定されているか確認します
+認証済みアカウントが正しくコンフィグに設定されているか確認します
 
 ```bash
 gcloud config get-value account
@@ -42,10 +42,10 @@ ACCOUNT: hogehoge@example.com
 のようにログイン済みのアカウントがうまく出ていない場合は,
 
 ```bash
-gcloud auth application-default login
+gcloud auth application-default login --no-launch-browser
 ```
 
-を実行してログインを行います
+を実行してログインを行います (ログイン URL が出てくるので, URL をクリック, verification code を入力しましょう)
 
 ## プロジェクトの設定
 
