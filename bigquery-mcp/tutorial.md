@@ -93,7 +93,7 @@ gcloud services enable cloudbuild.googleapis.com
 gcloud services enable artifactregistry.googleapis.com
 ```
 
-## Step 2: ローカル環境で Agent を動かしてみる
+## Step 2. ローカル環境で Agent を動かしてみる
 
 ### Python 依存関係のインストール
 
@@ -107,6 +107,9 @@ pip install -r requirements.txt
 
 ```bash
 curl -O https://storage.googleapis.com/genai-toolbox/v0.9.0/linux/amd64/toolbox
+```
+
+```bash
 chmod +x toolbox
 ```
 
@@ -126,12 +129,24 @@ cloudshell edit tools.yaml
 sed -i "s/project: PLEASE_SPECIFY_YOUR_PROJECT_ID/project: $PROJECT_ID/" tools.yaml
 ```
 
-### エージェントの実行
+## Step 2. ローカル環境で Agent を動かしてみる
 
-依存関係がインストールできたら, BigQuery MCP エージェントを実行してみましょう。
+### toolbox の起動
+
+```bash
+./toolbox --tools-file tools.yaml --address 127.0.0.1 --port 5000 &
+```
+
+### CLI AI Agents の起動
 
 ```bash
 adk run .
+```
+
+### web ブラウザを使って起動
+
+```bash
+cd ../ adk web
 ```
 
 ## Step 3: BigQuery データの探索
