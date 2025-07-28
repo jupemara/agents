@@ -1,16 +1,60 @@
 ---
-title: "AI Agents: BigQuery with MCP Toolbox"
-description: "BigQuery MCP エージェントを使用してデータベース操作を行うチュートリアル"
-duration: 15
+title: "AI Agents: ADK + MCP Toolbox with BigQuery"
+description: "MCP Toolbox を用いて, ADK と BigQuery を接続した AI Agents を作成するチュートリアル"
+duration: 60
 level: Beginner
-tags: [BigQuery, MCP, AI Agents, Python]
+tags: [BigQuery, MCP, AI Agents, Python, "MCP Toolbox", "genai-toolbox"]
 ---
 
-# AI Agents: BigQuery with MCP Toolbox
+# AI Agents: ADK + MCP Toolbox with BigQuery
 
-このチュートリアルでは、BigQuery MCP (Model Context Protocol) エージェントを使用してデータベース操作を行う方法を学習します。
+MCP Toolbox を用いて, ADK と BigQuery を接続した AI Agents を作成するチュートリアルです.
 
-## Step 1: 依存関係のインストール
+## Google アカウント認証とプロジェクトの設定
+
+- Google アカウント認証
+- プロジェクトの設定
+- 必要な API の有効化
+
+## Google アカウント認証
+
+```bash
+gcloud auth list
+```
+
+```bash
+gcloud config get-value account
+```
+
+ログインされているかを確認します. メールアドレスが表示されていない場合は,
+
+```bash
+gcloud auth application-default login
+```
+
+を実行してログインを行います.
+
+## プロジェクトの設定
+
+プロジェクト ID の設定
+
+```bash
+gcloud config set project PLEASE_SPECIFY_YOUR_PROJECT_ID
+```
+
+正しく設定されているか確認
+
+```bash
+gcloud config get-value project
+```
+
+今後使用するので project id を環境変数に設定
+
+```bash
+export PROJECT_ID=$(gcloud config get-value project)
+```
+
+## Python 依存関係のインストール
 
 まず、必要なPython依存関係をインストールします。
 
