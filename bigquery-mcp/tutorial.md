@@ -49,13 +49,13 @@ gcloud auth application-default login --no-launch-browser
 
 ## Step 1-2. プロジェクトの設定
 
-プロジェクト ID の設定
+### プロジェクト ID の設定
 
 ```bash
 gcloud config set project PLEASE_SPECIFY_YOUR_PROJECT_ID
 ```
 
-正しく設定されているか確認
+### 正しく設定されているか確認
 
 ```bash
 gcloud config get-value project
@@ -71,13 +71,13 @@ export PROJECT_ID=$(gcloud config get-value project)
 
 (どれが本当に必要なのか戻ってから確認する)
 
-BigQuery API の有効化
+### BigQuery API の有効化
 
 ```bash
 gcloud services enable bigquery.googleapis.com
 ```
 
-Vertex AI API の有効化 ( Agent Engine 用 )
+### Vertex AI API の有効化 ( Agent Engine 用 )
 
 ```bash
 gcloud services enable aiplatform.googleapis.com
@@ -85,7 +85,7 @@ gcloud services enable generativelanguage.googleapis.com
 gcloud services enable discoveryengine.googleapis.com
 ```
 
-Cloud Run API の有効化 ( デプロイ用 )
+### Cloud Run API の有効化 ( デプロイ用 )
 
 ```bash
 gcloud services enable run.googleapis.com
@@ -114,11 +114,13 @@ chmod +x toolbox
 
 プロジェクト ID を `tools.yaml` に設定する必要があるのでエディタで編集するか, コマンドラインで編集します (以下のいずれかを行います)
 
+#### by editor
+
 ```bash
 cloudshell edit tools.yaml
 ```
 
-by CLI:
+#### by CLI
 
 ```bash
 sed -i "s/project: PLEASE_SPECIFY_YOUR_PROJECT_ID/project: $PROJECT_ID/" tools.yaml
