@@ -14,6 +14,9 @@ echo "Using BUCKET_NAME: $BUCKET_NAME"
 gcloud builds submit . --config=cloudbuild.yaml --project=$GOOGLE_CLOUD_PROJECT
 gcloud run services replace vertex-ai/cloud-run.yaml --region=$REGION --project=$GOOGLE_CLOUD_PROJECT
 
+CLOUD_RUN_URL=$(gcloud run services describe bigquery-mcp-toolbox --region=$REGION --format="value(status.url)" --project=$GOOGLE_CLOUD_PROJECT)
+echo "TOOLBOX_URL=$CLOUD_RUN_URL" >> .env
+
 adk deploy agent_engine . \
   --display_name="$DISPLAY_NAME" \
   --staging_bucket="gs://$BUCKET_NAME" \
