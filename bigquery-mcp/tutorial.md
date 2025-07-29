@@ -241,7 +241,8 @@ export AGENTSPACE_APP_ID="PLEASE_SPECIFY_YOUR_AGENTSPACE_APP_ID"
 
 ### Agent を Agentspace に登録
 
+(curl コマンドが長くてコピペすると読みづらいので別のファイルにしています)
+
 ```bash
-# curl コマンドが長くてコピペすると読みづらいので別のファイルにしています
 ./register-agentspace.sh
 ```
