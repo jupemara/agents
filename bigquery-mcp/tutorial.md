@@ -78,10 +78,10 @@ export GOOGLE_CLOUD_LOCATION=us-central1
 今回利用する API の一覧です
 
 ```bash
-gcloud services enable bigquery.googleapis.com &&
-gcloud services enable cloudbuild.googleapis.com &&
-gcloud services enable aiplatform.googleapis.com &&
-gcloud services enable run.googleapis.com &&
+gcloud services enable bigquery.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+gcloud services enable aiplatform.googleapis.com
+gcloud services enable run.googleapis.com
 gcloud services enable discoveryengine.googleapis.com
 ```
 
