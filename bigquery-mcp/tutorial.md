@@ -64,7 +64,7 @@ gcloud config get-value project
 後ほど使用するので project id を環境変数に設定
 
 ```bash
-export PROJECT_ID=$(gcloud config get-value project)
+export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value project)
 ```
 
 ## Step 1-3. 必要な API の有効化
@@ -137,7 +137,7 @@ cloudshell edit tools.yaml
 #### by CLI
 
 ```bash
-sed -i "s/project: PLEASE_SPECIFY_YOUR_PROJECT_ID/project: $PROJECT_ID/" tools.yaml
+sed -i "s/project: PLEASE_SPECIFY_YOUR_PROJECT_ID/project: $GOOGLE_CLOUD_PROJECT/" tools.yaml
 ```
 
 ## Step 2. ローカル環境で Agent を動かしてみる
