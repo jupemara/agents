@@ -11,7 +11,12 @@ BUCKET_NAME="${GOOGLE_CLOUD_PROJECT}-${CONFIG_NAME}"
 echo "Using DISPLAY_NAME: $DISPLAY_NAME"
 echo "Using BUCKET_NAME: $BUCKET_NAME"
 
-gcloud builds submit . --config=cloudbuild.yaml --ignore-file=.gcloudignore --project=$GOOGLE_CLOUD_PROJECT
+gcloud builds submit . \
+  --config=cloudbuild.yaml \
+  --ignore-file=.gcloudignore \
+  --project=$GOOGLE_CLOUD_PROJECT \
+  --impersonate-service-account=$(gcloud config get-value account)
+
 CLOUD_RUN_URL=$(gcloud run services replace vertex-ai/cloud-run.yaml --region=$REGION --project=$GOOGLE_CLOUD_PROJECT)
 
 # CLOUD_RUN_URL=$(gcloud run services describe bigquery-mcp-toolbox --region=$REGION --format="value(status.url)" --project=$GOOGLE_CLOUD_PROJECT)
