@@ -153,27 +153,19 @@ sed -i "s/project: PLEASE_SPECIFY_YOUR_PROJECT_ID/project: $GOOGLE_CLOUD_PROJECT
 adk run .
 ```
 
+- "どんなことができますか??" とか聞いてみてください
+
 ### web ブラウザを使って起動
 
 ```bash
-cd ../ && adk web
+cd ../ && adk web --port 8080
 ```
 
 ## Step 3: BigQuery データの探索
 
 このエージェントは Google Cloud のリリースノートデータにアクセスできます。以下のような質問を試してみてください：
 
-- 「BigQuery の最新機能について教えて」
-- 「2024年の AI/ML 関連リリースを検索して」
-- 「Cloud SQL の最近の改善点は？」
-
-## Step 4: MCP ツールの確認
-
-エージェントは以下のツールを使用してBigQueryと連携します：
-
-- **execute_sql**: SQLクエリの実行
-- **get_table_info**: テーブルスキーマの取得
-- **list_dataset_ids**: データセット一覧の表示
-- **list_table_ids**: テーブル一覧の表示
-
-これらのツールにより、Google Cloud の公開リリースノートデータセット `bigquery-public-data.google_cloud_release_notes.release_notes` にアクセスできます。
+- テーブル構造教えて
+- BigQuery の最新機能 10 件
+- 2025年5月の Vertex AI 関連リリース
+- 最近の DB 周りのアプデ
