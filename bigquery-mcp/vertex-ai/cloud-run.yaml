@@ -17,7 +17,7 @@ spec:
       timeoutSeconds: 300
       containers:
       - name: toolbox
-        image: gcr.io/$PLEASE_SPECIFY_YOUR_PROJECT_ID/bigquery-mcp-toolbox
+        image: gcr.io/PLEASE_SPECIFY_YOUR_PROJECT_ID/bigquery-mcp-toolbox
         ports:
         - containerPort: 5000
         resources:

@@ -170,3 +170,40 @@ cd ../ && adk web --port 8080
 - テーブル構造教えて
 - 最近の DB 周りのアプデ
 - どんなデータが格納されてるの??
+
+## Step 3. Vertex AI Agent Engine へデプロイ
+
+### 作業ディレクトリの移動
+
+```bash
+cd -
+```
+
+### デプロイ用設定ファイルの編集
+
+デプロイ用の設定ファイルを現在利用中の Project ID で置換します。
+
+#### エディタで編集する場合
+
+```bash
+cloudshell edit cloudbuild.yaml
+cloudshell edit vertex-ai/cloud-run.yaml
+```
+
+#### コマンドラインで自動置換する場合
+
+```bash
+# cloudbuild.yaml の Project ID 置換
+sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/\${GOOGLE_CLOUD_PROJECT}/g" cloudbuild.yaml
+```
+
+```bash
+# cloud-run.yaml の Project ID 置換
+sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/\${GOOGLE_CLOUD_PROJECT}/g" vertex-ai/cloud-run.yaml
+```
+
+### deploy to Vertex AI Agent Engine
+
+```bash
+./vertex-ai/deploy.sh
+```
