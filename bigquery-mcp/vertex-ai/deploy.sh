@@ -18,9 +18,10 @@ CLOUD_RUN_URL=$(gcloud run services describe bigquery-mcp-toolbox --region=$REGI
 echo "TOOLBOX_URL=$CLOUD_RUN_URL" >> .env
 
 adk deploy agent_engine . \
+  --project="$GOOGLE_CLOUD_PROJECT" \
+  --region="$REGION" \
   --staging_bucket="gs://$BUCKET_NAME" \
-  --trace_to_cloud \
   --display_name="$DISPLAY_NAME" \
   --adk_app agent.py \
   --env_file .env \
-  .
+  --trace_to_cloud
