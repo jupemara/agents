@@ -208,3 +208,43 @@ sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/$GOOGLE_CLOUD_PROJECT/g" vertex-ai/clou
 ```bash
 ./vertex-ai/deploy.sh
 ```
+
+## Step 4. Vertex AI Agent Engine を ADK から呼び出す
+
+Agent Engine の ID ( `reasoningEngine` ) をコピーしておく
+
+```bash
+cloudshell open-url https://console.cloud.google.com/vertex-ai/agents/agent-engines
+```
+
+```bash
+export AGENT_ENGINE_REASONING_ENGINE_ID=xxxxxxxxxxxxxxxxxxx
+```
+
+`--session_service_uri` を使って, Agent Engine にデプロイした Agent を起動する
+
+```bash
+cd ../ && adk web --session_service_uri "agentengine://${xxxxxxxxxxxxxxxxxxx}"
+```
+
+## Step 5. Vertex AI Agent Engine の Agent を Agentspace とリンクさせる
+
+```bash
+$ curl -X POST \
+  -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+  -H "Content-Type: application/json" \
+  -H "X-Goog-User-Project: $(gcloud config get-value project)" \
+  "https://discoveryengine.googleapis.com/v1alpha/projects/${AGENT_ENGINE_REASONING_ENGINE_ID}/locations/global/collections/default_collection/engines/${AGENT_ENGINE_REASONING_ENGINE_ID}/assistants/default_assistant/agents" \
+  -d '{
+    "displayName": "bigquery-mcp",
+    "description": "BigQuery + Google Cloud Release",
+    "adk_agent_definition": {
+      "tool_settings": {
+        "tool_description": "BigQuery を MCP Tools 化したやつ"
+      },
+      "provisioned_reasoning_engine": {
+        "reasoning_engine": "projects/${GOOGLE_CLOUD_PROJECT}/locations/us-central1/reasoningEngines/${AGENT_ENGINE_REASONING_ENGINE_ID}"
+      }
+    }
+  }'
+```
