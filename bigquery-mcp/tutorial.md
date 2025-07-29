@@ -196,11 +196,11 @@ cloudshell edit vertex-ai/cloud-run.yaml
 #### by cli
 
 ```bash
-sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/\${GOOGLE_CLOUD_PROJECT}/g" cloudbuild.yaml
+sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/$GOOGLE_CLOUD_PROJECT/g" cloudbuild.yaml
 ```
 
 ```bash
-sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/\${GOOGLE_CLOUD_PROJECT}/g" vertex-ai/cloud-run.yaml
+sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/$GOOGLE_CLOUD_PROJECT/g" vertex-ai/cloud-run.yaml
 ```
 
 ### deploy to Vertex AI Agent Engine
