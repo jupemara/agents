@@ -69,31 +69,14 @@ export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value project)
 
 ## Step 1-3. 必要な API の有効化
 
-gcloud services enable aiplatform.googleapis.com
-gcloud services enable cloudbuild.googleapis.com
-
-(どれが本当に必要なのか戻ってから確認する)
-
-### BigQuery API の有効化
+今回利用する API の一覧です
 
 ```bash
-gcloud services enable bigquery.googleapis.com
-```
-
-### Vertex AI API の有効化 ( Agent Engine 用 )
-
-```bash
-gcloud services enable aiplatform.googleapis.com
-gcloud services enable generativelanguage.googleapis.com
+gcloud services enable bigquery.googleapis.com &&
+gcloud services enable cloudbuild.googleapis.com &&
+gcloud services enable aiplatform.googleapis.com &&
+gcloud services enable run.googleapis.com &&
 gcloud services enable discoveryengine.googleapis.com
-```
-
-### Cloud Run API の有効化 ( デプロイ用 )
-
-```bash
-gcloud services enable run.googleapis.com
-gcloud services enable cloudbuild.googleapis.com
-gcloud services enable artifactregistry.googleapis.com
 ```
 
 ### Cloud Build 用サービスアカウント権限の設定
@@ -173,7 +156,7 @@ adk run .
 ### web ブラウザを使って起動
 
 ```bash
-cd ../ && adk web --port 8080
+adk web ../ --port 8080
 ```
 
 ### プロンプトの入力
@@ -187,12 +170,6 @@ cd ../ && adk web --port 8080
 - どんなデータが格納されてるの??
 
 ## Step 3. Vertex AI Agent Engine へデプロイ
-
-### 作業ディレクトリの移動
-
-```bash
-cd -
-```
 
 ### デプロイ用設定ファイルの編集
 
@@ -239,27 +216,27 @@ export AGENT_ENGINE_REASONING_ENGINE_ID=xxxxxxxxxxxxxxxxxxx
 `--session_service_uri` を使って, Agent Engine にデプロイした Agent を起動する
 
 ```bash
-cd ../ && adk web --session_service_uri "agentengine://${xxxxxxxxxxxxxxxxxxx}"
+adk web ../ --session_service_uri "agentengine://${AGENT_ENGINE_REASONING_ENGINE_ID}"
 ```
 
 ## Step 5. Vertex AI Agent Engine の Agent を Agentspace とリンクさせる
 
 ```bash
-$ curl -X POST \
+curl -X POST \
   -H "Authorization: Bearer $(gcloud auth print-access-token)" \
   -H "Content-Type: application/json" \
-  -H "X-Goog-User-Project: $(gcloud config get-value project)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${AGENT_ENGINE_REASONING_ENGINE_ID}/locations/global/collections/default_collection/engines/${AGENT_ENGINE_REASONING_ENGINE_ID}/assistants/default_assistant/agents" \
-  -d '{
-    "displayName": "bigquery-mcp",
-    "description": "BigQuery + Google Cloud Release",
-    "adk_agent_definition": {
-      "tool_settings": {
-        "tool_description": "BigQuery を MCP Tools 化したやつ"
+  -H "X-Goog-User-Project: $GOOGLE_CLOUD_PROJECT" \
+  "https://discoveryengine.googleapis.com/v1alpha/projects/${GOOGLE_CLOUD_PROJECT}/locations/${GOOGLE_CLOUD_LOCATION}/collections/default_collection/engines/${AGENT_ENGINE_REASONING_ENGINE_ID}/assistants/default_assistant/agents" \
+  -d "{
+    \"displayName\": \"bigquery-mcp-$GOOGLE_CLOUD_PROJECT\",
+    \"description\": \"BigQuery のパブリックデータを用いた AI Agent with MCP Toolbox\",
+    \"adk_agent_definition\": {
+      \"tool_settings\": {
+        \"tool_description\": \"BigQuery を MCP Toolbox で接続した AI Agent\"
       },
-      "provisioned_reasoning_engine": {
-        "reasoning_engine": "projects/${GOOGLE_CLOUD_PROJECT}/locations/us-central1/reasoningEngines/${AGENT_ENGINE_REASONING_ENGINE_ID}"
+      \"provisioned_reasoning_engine\": {
+        \"reasoning_engine\": \"projects/${GOOGLE_CLOUD_PROJECT}/locations/${GOOGLE_CLOUD_LOCATION}/reasoningEngines/${AGENT_ENGINE_REASONING_ENGINE_ID}\"
       }
     }
-  }'
+  }"
 ```
