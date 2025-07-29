@@ -120,8 +120,7 @@ pip install -r requirements.txt
 ### MCP Toolbox のダウンロード
 
 ```bash
-curl -O https://storage.googleapis.com/genai-toolbox/v0.9.0/linux/amd64/toolbox
-chmod +x toolbox
+curl -O https://storage.googleapis.com/genai-toolbox/v0.9.0/linux/amd64/toolbox && chmod +x toolbox
 ```
 
 ### Toolbox のコンフィグファイルの編集 ( tools.yaml )
@@ -157,7 +156,7 @@ adk run .
 ### web ブラウザを使って起動
 
 ```bash
-cd ../ adk web
+cd ../ && adk web
 ```
 
 ## Step 3: BigQuery データの探索
