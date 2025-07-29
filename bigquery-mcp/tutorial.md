@@ -222,7 +222,7 @@ export AGENT_ENGINE_REASONING_ENGINE_ID="PLEASE_SPECIFY_YOUR_REASONING_ENGINE_ID
 `--session_service_uri` を使って, Agent Engine にデプロイした Agent を起動する
 
 ```bash
-adk web ../ --session_service_uri "agentengine://${AGENT_ENGINE_REASONING_ENGINE_ID}"
+adk web ../ --session_service_uri "agentengine://${AGENT_ENGINE_REASONING_ENGINE_ID}" --port 8080
 ```
 
 ## Step 5. Vertex AI Agent Engine の Agent を Agentspace とリンクさせる
