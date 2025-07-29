@@ -183,22 +183,23 @@ cd -
 
 デプロイ用の設定ファイルを現在利用中の Project ID で置換します。
 
-#### エディタで編集する場合
+#### by editor
 
 ```bash
 cloudshell edit cloudbuild.yaml
+```
+
+```bash
 cloudshell edit vertex-ai/cloud-run.yaml
 ```
 
-#### コマンドラインで自動置換する場合
+#### by cli
 
 ```bash
-# cloudbuild.yaml の Project ID 置換
 sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/\${GOOGLE_CLOUD_PROJECT}/g" cloudbuild.yaml
 ```
 
 ```bash
-# cloud-run.yaml の Project ID 置換
 sed -i "s/PLEASE_SPECIFY_YOUR_PROJECT_ID/\${GOOGLE_CLOUD_PROJECT}/g" vertex-ai/cloud-run.yaml
 ```
 
