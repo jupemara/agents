@@ -221,21 +221,33 @@ adk web ../ --session_service_uri "agentengine://${AGENT_ENGINE_REASONING_ENGINE
 
 ## Step 5. Vertex AI Agent Engine の Agent を Agentspace とリンクさせる
 
+### 必要な変数の設定
+
+```bash
+# プロジェクト番号を取得（重要：プロジェクトIDではなく番号）
+PROJECT_NUMBER=$(gcloud projects describe $GOOGLE_CLOUD_PROJECT --format="value(projectNumber)")
+
+# Agentspace のアプリID（事前に作成された値）
+export AGENTSPACE_APP_ID="your-agentspace-app-id"
+```
+
+### Agent を Agentspace に登録
+
 ```bash
 curl -X POST \
   -H "Authorization: Bearer $(gcloud auth print-access-token)" \
   -H "Content-Type: application/json" \
   -H "X-Goog-User-Project: $GOOGLE_CLOUD_PROJECT" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${GOOGLE_CLOUD_PROJECT}/locations/${GOOGLE_CLOUD_LOCATION}/collections/default_collection/engines/${AGENT_ENGINE_REASONING_ENGINE_ID}/assistants/default_assistant/agents" \
+  "https://discoveryengine.googleapis.com/v1alpha/projects/$GOOGLE_CLOUD_PROJECT/locations/global/collections/default_collection/engines/PLEASE_SPECIFY_YOUR_AGENTSPACE_APP_ID/assistants/default_assistant/agents" \
   -d "{
-    \"displayName\": \"bigquery-mcp-$GOOGLE_CLOUD_PROJECT\",
-    \"description\": \"BigQuery のパブリックデータを用いた AI Agent with MCP Toolbox\",
+    \"displayName\": \"bigquery-mcp\",
+    \"description\": \"BigQuery + Google Cloud Release\",
     \"adk_agent_definition\": {
       \"tool_settings\": {
-        \"tool_description\": \"BigQuery を MCP Toolbox で接続した AI Agent\"
+        \"tool_description\": \"BigQuery を MCP Tools 化したやつ\"
       },
       \"provisioned_reasoning_engine\": {
-        \"reasoning_engine\": \"projects/${GOOGLE_CLOUD_PROJECT}/locations/${GOOGLE_CLOUD_LOCATION}/reasoningEngines/${AGENT_ENGINE_REASONING_ENGINE_ID}\"
+        \"reasoning_engine\": \"projects/$GOOGLE_CLOUD_PROJECT/locations/$GOOGLE_CLOUD_LOCATION/reasoningEngines/$AGENT_ENGINE_REASONING_ENGINE_ID\"
       }
     }
   }"
