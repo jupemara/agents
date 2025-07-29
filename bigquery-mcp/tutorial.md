@@ -102,7 +102,8 @@ gcloud services enable artifactregistry.googleapis.com
 
 ```bash
 gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
-    --member="serviceAccount:$(gcloud projects describe $GOOGLE_CLOUD_PROJECT --format='value(projectNumber)'-compute@developer.gserviceaccount.com)" \
+    --member="serviceAccount:$(gcloud projects describe $GOOGLE_CLOUD_PROJECT \
+    --format="value(projectNumber)")-compute@developer.gserviceaccount.com" \
     --role="roles/editor"
 ```
 
