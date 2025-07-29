@@ -1,6 +1,6 @@
 # BigQuery MCP Agent
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=bigquery-mcp&cloudshell_git_branch=main&cloudshell_open_in_editor=hands-on.md)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=bigquery-mcp&cloudshell_git_branch=vertex-ai-agent&cloudshell_open_in_editor=hands-on.md)
 
 Google Cloud リリースノート検索のADKエージェント実装
 
@@ -30,7 +30,7 @@ $ pip install -r requirements.txt
 $ gcloud services enable bigquery.googleapis.com
 ```
 
-### 3. MCP Toolbox セットアップ
+### 3. MCP Toolbox
 
 ```bash
 export VERSION=0.9.0
@@ -49,10 +49,10 @@ $ ./toolbox --tools-file tools.yaml --address 127.0.0.1 --port 5000
 ### 4. 環境変数設定
 
 ```zsh
-# or .env ファイルを作成
 $ export GOOGLE_GENAI_USE_VERTEXAI=TRUE
 $ export GOOGLE_CLOUD_PROJECT=$(gcloud config get project)
 $ export GOOGLE_CLOUD_LOCATION=us-central1
+$ export TOOLBOX_URL=127.0.0.1:5000
 ```
 
 ## 使用方法
@@ -60,16 +60,10 @@ $ export GOOGLE_CLOUD_LOCATION=us-central1
 ### 基本実行
 
 ```zsh
-# 先に toolbox を立ち上げておく
+# in advance toolbox should be launched
 $ ./toolbox --tools-file tools.yaml --address 127.0.0.1 --port 5000
-# terminal 上で実行するなら
+# on cli agent
 $ adk run .
-# web を起動するなら
+# on browser agent
 $ adk web
-```
-
-## deploy to Cloud Run
-
-```zsh
-$ ./cloud-run/deploy.sh
 ```
