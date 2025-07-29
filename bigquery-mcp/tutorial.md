@@ -216,7 +216,7 @@ cloudshell open-url https://console.cloud.google.com/vertex-ai/agents/agent-engi
 ```
 
 ```bash
-export AGENT_ENGINE_REASONING_ENGINE_ID=xxxxxxxxxxxxxxxxxxx
+export AGENT_ENGINE_REASONING_ENGINE_ID="PLEASE_SPECIFY_YOUR_REASONING_ENGINE_ID"
 ```
 
 `--session_service_uri` を使って, Agent Engine にデプロイした Agent を起動する
@@ -229,32 +229,19 @@ adk web ../ --session_service_uri "agentengine://${AGENT_ENGINE_REASONING_ENGINE
 
 ### 必要な変数の設定
 
-```bash
-# プロジェクト番号を取得（重要：プロジェクトIDではなく番号）
-PROJECT_NUMBER=$(gcloud projects describe $GOOGLE_CLOUD_PROJECT --format="value(projectNumber)")
+Agentspace の APP ID 取得のために console を確認
 
-# Agentspace のアプリID（事前に作成された値）
-export AGENTSPACE_APP_ID="your-agentspace-app-id"
+```bash
+cloudshell open-url https://console.cloud.google.com/gen-app-builder/engines
+```
+
+```bash
+export AGENTSPACE_APP_ID="PLEASE_SPECIFY_YOUR_AGENTSPACE_APP_ID"
 ```
 
 ### Agent を Agentspace に登録
 
 ```bash
-curl -X POST \
-  -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  -H "Content-Type: application/json" \
-  -H "X-Goog-User-Project: $GOOGLE_CLOUD_PROJECT" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/$GOOGLE_CLOUD_PROJECT/locations/global/collections/default_collection/engines/PLEASE_SPECIFY_YOUR_AGENTSPACE_APP_ID/assistants/default_assistant/agents" \
-  -d "{
-    \"displayName\": \"bigquery-mcp\",
-    \"description\": \"BigQuery + Google Cloud Release\",
-    \"adk_agent_definition\": {
-      \"tool_settings\": {
-        \"tool_description\": \"BigQuery を MCP Tools 化してみた\"
-      },
-      \"provisioned_reasoning_engine\": {
-        \"reasoning_engine\": \"projects/$GOOGLE_CLOUD_PROJECT/locations/$GOOGLE_CLOUD_LOCATION/reasoningEngines/$AGENT_ENGINE_REASONING_ENGINE_ID\"
-      }
-    }
-  }"
+# curl コマンドが長くてコピペすると読みづらいので別のファイルにしています
+./register-agentspace.sh
 ```
