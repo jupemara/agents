@@ -67,6 +67,12 @@ gcloud config get-value project
 export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value project)
 ```
 
+ついでにデフォの location も後ほど使用するので設定
+
+```bash
+export GOOGLE_CLOUD_LOCATION=us-central1
+```
+
 ## Step 1-3. 必要な API の有効化
 
 今回利用する API の一覧です
@@ -244,7 +250,7 @@ curl -X POST \
     \"description\": \"BigQuery + Google Cloud Release\",
     \"adk_agent_definition\": {
       \"tool_settings\": {
-        \"tool_description\": \"BigQuery を MCP Tools 化したやつ\"
+        \"tool_description\": \"BigQuery を MCP Tools 化してみた\"
       },
       \"provisioned_reasoning_engine\": {
         \"reasoning_engine\": \"projects/$GOOGLE_CLOUD_PROJECT/locations/$GOOGLE_CLOUD_LOCATION/reasoningEngines/$AGENT_ENGINE_REASONING_ENGINE_ID\"
