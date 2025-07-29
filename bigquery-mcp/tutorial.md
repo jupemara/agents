@@ -69,6 +69,9 @@ export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value project)
 
 ## Step 1-3. 必要な API の有効化
 
+gcloud services enable aiplatform.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+
 (どれが本当に必要なのか戻ってから確認する)
 
 ### BigQuery API の有効化
@@ -92,6 +95,17 @@ gcloud services enable run.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
 gcloud services enable artifactregistry.googleapis.com
 ```
+
+### Cloud Build 用サービスアカウント権限の設定
+
+デプロイに使用するサービスアカウントに編集者権限を付与
+
+```bash
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+    --member="serviceAccount:$(gcloud projects describe $GOOGLE_CLOUD_PROJECT --format='value(projectNumber)'-compute@developer.gserviceaccount.com)" \
+    --role="roles/editor"
+```
+
 
 ## Step 2. ローカル環境で Agent を動かしてみる
 
