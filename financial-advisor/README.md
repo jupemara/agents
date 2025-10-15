@@ -1,6 +1,6 @@
 # Financial Advisor エージェント
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=financial-advisor&cloudshell_git_branch=main)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=financial-advisor&cloudshell_git_branch=main&cloudshell_open_in_editor=README.md)
 
 金融アドバイスを提供する包括的なマルチエージェントシステムです. 市場分析, トレーディング戦略の提案, 実行計画, リスク評価を行います.
 
