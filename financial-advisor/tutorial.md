@@ -8,6 +8,8 @@ tags: [AI Agents, ADK, Python, "Financial Advisor", Gemini]
 
 # AI Agents: Financial Advisor with ADK
 
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=financial-advisor&cloudshell_git_branch=main)
+
 ADK (Agent Development Kit) を用いて、市場分析から投資戦略、リスク評価まで提供する金融アドバイザー AI Agents を作成するチュートリアルです。
 
 ## Step 1. Google アカウント認証とプロジェクトの設定
