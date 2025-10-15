@@ -8,9 +8,7 @@ tags: [AI Agents, ADK, Python, "Financial Advisor", Gemini]
 
 # AI Agents: Financial Advisor with ADK
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=financial-advisor&cloudshell_git_branch=main)
-
-ADK (Agent Development Kit) を用いて、市場分析から投資戦略、リスク評価まで提供する金融アドバイザー AI Agents を作成するチュートリアルです。
+ADK (Agent Development Kit) を用いて, 市場分析から投資戦略, リスク評価まで提供する金融アドバイザー AI Agents を作成するチュートリアルです.
 
 ## Step 1. Google アカウント認証とプロジェクトの設定
 
@@ -47,7 +45,7 @@ ACCOUNT: hogehoge@example.com
 gcloud auth application-default login --no-launch-browser
 ```
 
-を実行してログインを行います (ログイン URL が出てくるので, URL をクリック, verification code を入力しましょう)
+を実行してログインを行います (ログイン URL が出てくるので, URL をクリック, verification code を入力しましょう).
 
 ## Step 1-2. プロジェクトの設定
 
@@ -86,7 +84,7 @@ gcloud services enable customsearch.googleapis.com
 
 ## Step 2. uv のインストール
 
-uv は高速な Python パッケージマネージャです。pip を使ってインストールします
+uv は高速な Python パッケージマネージャです. pip を使ってインストールします.
 
 ```bash
 pip install uv
@@ -118,7 +116,7 @@ cat .env
 
 ## Step 4. Python 依存関係のインストール
 
-uv を使って依存関係をインストールします
+uv を使って依存関係をインストールします.
 
 ```bash
 uv sync
@@ -132,7 +130,7 @@ uv sync
 adk run .
 ```
 
-以下のようなプロンプトが表示されるので、順番に入力していきます:
+以下のようなプロンプトが表示されるので, 順番に入力していきます:
 
 1. 分析したい市場ティッカーシンボルを入力 (例: `AAPL`, `GOOGL`, `MSFT`)
 2. リスク態度を選択 (例: `保守的`, `中程度`, `積極的`)
@@ -153,7 +151,7 @@ adk web . --port 8080
 Cloud Shell の Web Preview 機能を使ってアクセスします:
 1. 上部メニューの「ウェブでプレビュー」をクリック
 2. ポート 8080 を選択
-3. ブラウザで UI が開きます
+3. ブラウザで UI が開きます.
 
 ### プロンプトの入力例
 
@@ -246,7 +244,7 @@ uv sync --reinstall
 
 ## おめでとうございます!
 
-これで Financial Advisor Agent の構築が完了しました。
+これで Financial Advisor Agent の構築が完了しました.
 
 次のステップ:
 - 異なる銘柄で試してみる

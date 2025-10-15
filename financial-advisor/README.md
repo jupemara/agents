@@ -2,7 +2,7 @@
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/jupemara/agents&cloudshell_tutorial=tutorial.md&cloudshell_workspace=financial-advisor&cloudshell_git_branch=main)
 
-金融アドバイスを提供する包括的なマルチエージェントシステムです。市場分析、トレーディング戦略の提案、実行計画、リスク評価を行います。
+金融アドバイスを提供する包括的なマルチエージェントシステムです. 市場分析, トレーディング戦略の提案, 実行計画, リスク評価を行います.
 
 ## 概要
 
@@ -25,7 +25,7 @@ cd financial-advisor
 
 ### 2. uvのインストール
 
-uvは高速なPythonパッケージマネージャです。pipを使ってインストールします:
+uvは高速なPythonパッケージマネージャです. pipを使ってインストールします:
 
 ```bash
 # uvのインストール
@@ -47,7 +47,7 @@ uv sync
 
 ### 4. 環境変数の設定
 
-`.env`ファイルを編集して、GCPプロジェクト情報を設定してください:
+`.env`ファイルを編集して, GCPプロジェクト情報を設定してください:
 
 ```bash
 vi .env
@@ -97,7 +97,7 @@ adk web
 Cloud Shell Web Previewを使用してブラウザでアクセス:
 1. 上部メニューの「ウェブでプレビュー」をクリック
 2. ポート8080を選択
-3. ブラウザでUIが開きます
+3. ブラウザでUIが開きます.
 
 ### 方法3: adk api_server (APIサーバー)
 
@@ -105,7 +105,7 @@ Cloud Shell Web Previewを使用してブラウザでアクセス:
 adk api_server
 ```
 
-REST APIとして動作します。別のターミナルから:
+REST APIとして動作します. 別のターミナルから:
 
 ```bash
 curl -X POST http://localhost:8080/chat \
@@ -178,7 +178,7 @@ uv sync --reinstall
 
 ## 重要な注意事項
 
-このツールは教育および情報提供のみを目的としています。
+このツールは教育および情報提供のみを目的としています.
 - AIモデルが生成する情報は金融アドバイスではありません
 - 投資判断の前に必ず専門家に相談してください
 - 過去の実績は将来の結果を保証しません
